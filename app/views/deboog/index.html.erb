@@ -1,0 +1,30 @@
+<div id="count"><%= @resp[:media].size %> results</div>
+
+<div id="took">Next Page Token: <%= @resp[:youtube_page_token] %> </div>
+
+<div id="results" style="width: 100%">
+  <% @resp[:media].map {|x| x.as_json }.each do |m| %>
+    <div style='float: left; background-size: cover; display: inline; border-top: 1px solid gray; border-left: 1px solid gray; padding: 7px;'>
+      <p>
+        <strong><%= m[:media_source] %></strong><br />
+        <%= time_ago_in_words(m[:media_created_at]) %> ago<br />
+
+        @<%= m[:screen_name] %><br />
+
+        Score: <em><%= m[:_capture_score] %></em><br />
+
+        <% if m[:location] %>
+          <%= m[:location] %> location<br />
+        <% end %>
+      </p>
+
+      <img class="socialImage" width=300 height=300 src='<%= m[:thumbnail_url] %>' data-description='<%= "#{m[:title]} #{m[:description ]}" %>' />
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $('.socialImage').click(function(e) {
+    alert($(this).data("description"));
+  });
+</script>

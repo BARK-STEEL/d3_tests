@@ -1,0 +1,142 @@
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+<style>
+#chart_container {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+        float: left;
+        /*position: relative;
+        left: 10px;*/
+}
+#y_axis {
+        float: left;
+        width: 40px;
+}
+#legend {
+        float: left;
+        margin-left: 15px;
+}
+.rickshaw_graph .x_tick .title {
+    bottom: -24px;
+}
+.detail_swatch {
+  float: right;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px 0 25px
+}
+.date {
+  color: #a0a0a0;
+}
+.rickshaw_graph .detail .x_label {
+  display: none
+}
+#preview {
+	margin-top: 10px;
+  margin-left: 50px;
+}
+.ui-widget-header {
+  background-color: rgb(246, 168, 40);
+}
+</style>
+
+<div id="chart_container">
+        <h1>Top Hashtags During MNF September 12, 2016</h1>
+        <div id="y_axis"></div>
+        <div id="chart"></div>
+        <div id="legend"></div>
+</div>
+
+<div id="preview"></div>
+
+<script>
+
+$(document).ready(function() {
+  console.log('ready');
+});
+var palette = new Rickshaw.Color.Palette();
+
+$(document).ready(function() {
+  jQuery.ajax({
+  url: 'http://localhost:9200/capture-event-media/_search',
+  data: {
+  query: {
+    filtered: {
+      query: {
+        query_string: {
+          query: "*",
+          analyze_wildcard: true
+        }
+      },
+      filter: {
+        bool: {
+          must: [
+            {
+              range: {
+                media_created_at: {
+                  gte: 1473717600000,
+                  lte: 1473742800000
+                }
+              }
+            }
+          ],
+          must_not: []
+        }
+      }
+    }
+},
+  size: 0,
+  aggs: {
+    2: {
+      terms: {
+        field: "raw_description",
+        include: {
+          pattern: "#[a-z0-9]{1,30}",
+          flags: "CASE_INSENSITIVE"
+        },
+        size: 10,
+        order: {
+          _count: "desc"
+        }
+      },
+      aggs: {
+        3: {
+          date_histogram: {
+            field: "media_created_at",
+            interval: "30m",
+            pre_zone: "-04:00",
+            pre_zone_adjust_large_interval: true,
+            min_doc_count: 1,
+            extended_bounds: {
+              min: 1473717600000,
+              max: 1473742800000
+            }
+          }
+        }
+      }
+    }
+  }
+},
+dataType: 'json',
+success: renderGraph
+});
+});
+
+function renderGraph(json) {
+  var ajaxGraph = new Rickshaw.Graph( {
+    element: document.getElementById("chart"),
+    width: 1080,
+    height: 480,
+    renderer: 'line',
+    stroke: true,
+    preserve: true,
+    series: [{name: "series 1"}, {color:"rgba(255, 0, 0, 0.4)", data: json[0].data}]
+  });
+
+  ajaxGraph.render();
+}
+
+</script>

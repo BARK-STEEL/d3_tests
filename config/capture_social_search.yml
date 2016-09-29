@@ -1,0 +1,63 @@
+## NOTE
+# the twitter_consumer_key and twitter_consumer_secret must match what is in the API layer config
+
+test:
+  instagram_client_id:            "a1f9b276e4394adcb36cd4a91ab078cf"
+  instagram_client_secret:        "d61b0036316b409995465e510f910c41"
+  instagram_default_access_token: "test"
+  instagram_redirect_uri:         "https://api-mobile.capture.com/instagram/callback"
+  instagram_v1_uri:               "https://api.instagram.com/v1"
+  default_timeout_seconds:        5
+  elasticsearch_host:             "http://localhost:9200"
+  google_api_key:                 "AIzaSyA3cuXlJmmxLsdwJfQiu7FuqwGFO-61jG8"
+  twitter_consumer_key:           "JR4s5FYPaxIxulZREZ4kw"
+  twitter_consumer_secret:        "WFhWWvXbaIdKIFGnZ5J25dvKuxWXoE26U35z4N162I"
+
+
+development:
+  instagram_client_id:            "a1f9b276e4394adcb36cd4a91ab078cf"
+  instagram_client_secret:        "d61b0036316b409995465e510f910c41"
+  instagram_default_access_token: "1403464641.f249155.63159a0504e14524a0a8bc1906d4c8b5"
+  instagram_redirect_uri:         "https://api-mobile.capture.com/instagram/callback"
+  instagram_v1_uri:               "https://api.instagram.com/v1"
+  default_timeout_seconds:        5
+  elasticsearch_host:             "http://localhost:9200"
+  google_api_key:                 "AIzaSyAPfh2cfQmdDCaWgkGPRZUjXTRJl2OWVdA"
+  twitter_consumer_key:           "JR4s5FYPaxIxulZREZ4kw"
+  twitter_consumer_secret:        "WFhWWvXbaIdKIFGnZ5J25dvKuxWXoE26U35z4N162I"
+
+mobile: 
+  instagram_client_id:            "f249155e15f8420b9a511598f6bd9fba"
+  instagram_client_secret:        "1299b916f7c4431bbc551c5d636327f3"
+  instagram_default_access_token: "1403464641.f249155.63159a0504e14524a0a8bc1906d4c8b5"
+  instagram_redirect_uri:         "https://mobile.capture.com/instagram/callback"
+  instagram_v1_uri:               "https://api.instagram.com/v1"
+  default_timeout_seconds:        5
+  elasticsearch_host:             "localhost:9200"
+  google_api_key:                 "AIzaSyCMZg2o-HdQoTLzvgk3hG9YtcBwpkfm1nw"
+  twitter_consumer_key:           "JR4s5FYPaxIxulZREZ4kw"
+  twitter_consumer_secret:        "WFhWWvXbaIdKIFGnZ5J25dvKuxWXoE26U35z4N162I"
+
+staging:
+  instagram_client_id:            "6206778e57164b0b9d1204f8fa2e7e89"
+  instagram_client_secret:        "1a5ba23ce30f4817bd9690ae16d3e536"
+  instagram_default_access_token: "2255660975.6206778.557e13b8cd534f0c9d492dd7b5766182"
+  instagram_redirect_uri:         "https://staging.capture.com/instagram/callback"
+  instagram_v1_uri:               "https://api.instagram.com/v1"
+  default_timeout_seconds:        5
+  elasticsearch_host:             "http://search-staging-v3-wujz6o7onnnu2b5s4vtztxdzwy.us-east-1.es.amazonaws.com"
+  google_api_key:                 "AIzaSyCMZg2o-HdQoTLzvgk3hG9YtcBwpkfm1nw"
+  twitter_consumer_key:           "JR4s5FYPaxIxulZREZ4kw"
+  twitter_consumer_secret:        "WFhWWvXbaIdKIFGnZ5J25dvKuxWXoE26U35z4N162I"
+
+production:
+  instagram_client_id:            "711c5033097e48b290c8c5ebe76bd15d"
+  instagram_client_secret:        "07a80899af464f4ba798553b03ce18d2"
+  instagram_default_access_token: "1736590509.711c503.0a01a87a034e452fad380a69e0fe76c1"
+  instagram_redirect_uri:         "https://capture.com/instagram/callback"
+  instagram_v1_uri:               "https://api.instagram.com/v1"
+  default_timeout_seconds:        5
+  elasticsearch_host:             "http://search-production-v3-wmbigtpiltmdj6xmstlwqa4uoe.us-east-1.es.amazonaws.com"
+  google_api_key:                 "AIzaSyBSv8W8anR6SmMisEqFflRCjryu5EnHn-o"
+  twitter_consumer_key:           "ngQZ2dmKBsI3le1Mx3ivQ"
+  twitter_consumer_secret:        "c61E0ENqoN9KYwcj36IOEqcOAYeOlA4Sr7of01E"

@@ -1,0 +1,172 @@
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+<style>
+#chart_container {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+        float: left;
+        /*position: relative;
+        left: 10px;*/
+}
+#y_axis {
+        float: left;
+        width: 40px;
+}
+#legend {
+        float: left;
+        margin-left: 15px;
+}
+.rickshaw_graph .x_tick .title {
+    bottom: -24px;
+}
+.detail_swatch {
+  float: right;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px 0 25px
+}
+.date {
+  color: #a0a0a0;
+}
+.rickshaw_graph .detail .x_label {
+  display: none
+}
+#preview {
+	margin-top: 10px;
+  margin-left: 50px;
+}
+.ui-widget-header {
+  background-color: rgb(246, 168, 40);
+}
+</style>
+
+<div id="chart_container">
+        <h1>Top Hashtags During MNF September 12, 2016</h1>
+        <div id="y_axis"></div>
+        <div id="chart"></div>
+        <div id="legend"></div>
+</div>
+
+<div id="preview"></div>
+
+<script>
+
+$(document).ready(function() {
+  var palette = new Rickshaw.Color.Palette();
+
+  var graph = new Rickshaw.Graph( {
+          element: document.querySelector("#chart"),
+          width: 1080,
+          height: 480,
+          renderer: 'line',
+  	      stroke: true,
+  	      preserve: true,
+          series: [
+            {
+              name:"#49ers",
+              data:[{x:1473717600, y:7}, {x:1473719400, y:3}, {x:1473721200, y:3}, {x:1473723000, y:2}, {x:1473724800, y:1}, {x:1473726600, y:3}, {x:1473728400, y:22}, {x:1473730200, y:50}, {x:1473732000, y:79}, {x:1473733800, y:86}, {x:1473735600, y:56}, {x:1473737400, y:67}, {x:1473739200, y:35}, {x:1473741000, y:57}],
+              color:palette.color()
+            },
+            {
+              name:"#mnf",
+              data:[{x:1473717600, y:21}, {x:1473719400, y:33}, {x:1473721200, y:39}, {x:1473723000, y:14}, {x:1473724800, y:9}, {x:1473726600, y:18}, {x:1473728400, y:20}, {x:1473730200, y:25}, {x:1473732000, y:37}, {x:1473733800, y:39}, {x:1473735600, y:26}, {x:1473737400, y:23}, {x:1473739200, y:20}, {x:1473741000, y:16}],
+              color:palette.color()
+            }, {
+              name:"#httr",
+              data:[{x:1473717600, y:32}, {x:1473719400, y:74}, {x:1473721200, y:85}, {x:1473723000, y:46}, {x:1473724800, y:26}, {x:1473726600, y:37}, {x:1473728400, y:8}, {x:1473730200, y:4}, {x:1473732000, y:4}, {x:1473733800, y:1}, {x:1473735600, y:3}, {x:1473737400, y:2}, {x:1473739200, y:1}, {x:1473741000, y:1}],
+              color:palette.color()
+            }, {
+              name:"#beatla",
+              data:[{x:1473721200, y:1}, {x:1473724800, y:1}, {x:1473726600, y:1}, {x:1473728400, y:9}, {x:1473730200, y:30}, {x:1473732000, y:44}, {x:1473733800, y:45}, {x:1473735600, y:32}, {x:1473737400, y:43}, {x:1473739200, y:22}, {x:1473741000, y:27}],
+              color:palette.color()
+            }, {
+              name:"#mondaynightfootball",
+              data:[{x:1473717600, y:6}, {x:1473719400, y:17}, {x:1473721200, y:27}, {x:1473723000, y:13}, {x:1473724800, y:16}, {x:1473726600, y:10}, {x:1473728400, y:13}, {x:1473730200, y:17}, {x:1473732000, y:23}, {x:1473733800, y:28}, {x:1473735600, y:17}, {x:1473737400, y:20}, {x:1473739200, y:18}, {x:1473741000, y:14}],
+              color:palette.color()
+            }, {
+              name:"#levisstadium",
+              data:[{x:1473721200, y:1}, {x:1473726600, y:1}, {x:1473728400, y:9}, {x:1473730200, y:36}, {x:1473732000, y:26}, {x:1473733800, y:38}, {x:1473735600, y:42}, {x:1473737400, y:34}, {x:1473739200, y:22}, {x:1473741000, y:21}],
+              color:palette.color()
+            }, {
+              name:"#nfl",
+              data:[{x:1473717600, y:5}, {x:1473719400, y:10}, {x:1473721200, y:12}, {x:1473723000, y:5}, {x:1473724800, y:11}, {x:1473726600, y:11}, {x:1473728400, y:4}, {x:1473730200, y:16}, {x:1473732000, y:23}, {x:1473733800, y:28}, {x:1473735600, y:19}, {x:1473737400, y:19}, {x:1473739200, y:13}, {x:1473741000, y:9}],
+              color:palette.color()
+            }, {
+              name:"#steelers",
+              data:[{x:1473717600, y:15}, {x:1473719400, y:22}, {x:1473721200, y:22}, {x:1473723000, y:24}, {x:1473724800, y:18}, {x:1473726600, y:27}, {x:1473728400, y:10}, {x:1473730200, y:2}, {x:1473732000, y:5}, {x:1473733800, y:2}, {x:1473735600, y:4}, {x:1473739200, y:2}, {x:1473741000, y:1}],
+              color:palette.color()
+            }, {
+              name:"#niners",
+              data:[{x:1473728400, y:9}, {x:1473730200, y:17}, {x:1473732000, y:16}, {x:1473733800, y:29}, {x:1473735600, y:24}, {x:1473737400, y:24}, {x:1473739200, y:15}, {x:1473741000, y:11}],
+              color:palette.color()
+            }, {
+              name:"#redskins",
+              data:[{x:1473717600, y:11}, {x:1473719400, y:25}, {x:1473721200, y:29}, {x:1473723000, y:26}, {x:1473724800, y:14}, {x:1473726600, y:21}, {x:1473728400, y:9}, {x:1473730200, y:1}, {x:1473732000, y:1}, {x:1473739200, y:2}],
+              color:palette.color()
+            }
+          ]
+  } );
+
+  graph.render();
+
+  var preview = new Rickshaw.Graph.RangeSlider( {
+  	graph: graph,
+  	element: document.getElementById('preview')
+  } );
+
+  function getTimeUnit() {
+    var time = new Rickshaw.Fixtures.Time.Local();
+    time.formatTime = function(d) { return moment(d).format("M/D/YY h:mm a"); }
+    return time.unit("hour")
+  }
+
+  var x_axis = new Rickshaw.Graph.Axis.Time( {
+    graph: graph,
+    timeUnit: getTimeUnit()
+  } );
+
+
+  var y_axis = new Rickshaw.Graph.Axis.Y( {
+          graph: graph,
+          orientation: 'left',
+          height: 480,
+          tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+          element: document.getElementById('y_axis'),
+  } );
+
+  y_axis.render();
+
+  var legend = new Rickshaw.Graph.Legend( {
+          element: document.querySelector('#legend'),
+          graph: graph
+  } );
+  var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
+          graph: graph,
+          legend: legend
+  });
+
+  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
+          graph: graph,
+          legend: legend
+  });
+  var order = new Rickshaw.Graph.Behavior.Series.Order({
+          graph: graph,
+          legend: legend
+  });
+  var hoverDetail = new Rickshaw.Graph.HoverDetail({
+    graph: graph,
+    formatter: function(series, x, y) {
+  		var date = '<span class="date">' + moment(new Date(x * 1000).toLocaleString()).format("MMMM Do YYYY h:mm a") + '</span>';
+  		var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
+  		var content = swatch + series.name + ": " + parseInt(y) + ' posts<br>' + date;
+  		return content;
+  	}
+  });
+  x_axis.render();
+})
+
+
+</script>
